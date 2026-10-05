@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FundMe: a simple ETH funding project with a $2 minimum, powered by Chainlink." />
+    <title>FundMe · ETH contributions</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="eyebrow">ETH + CHAINLINK</span>
+        <h1>FundMe<span>.</span></h1>
+        <p>A small contribution. An on-chain record.</p>
+        <span id="network" class="badge">Loading deployment…</span>
+      </header>
+
+      <section class="card" aria-label="Wallet and contract">
+        <div class="section-heading"><h2>Your connection</h2><button id="connect" disabled>Connect MetaMask</button></div>
+        <dl>
+          <dt>Wallet</dt><dd id="wallet">Not connected</dd>
+          <dt>Contract</dt><dd id="contract-address">No deployment loaded</dd>
+        </dl>
+        <button id="switch-network" class="secondary" hidden>Switch network</button>
+      </section>
+
+      <section class="card" aria-labelledby="fund-heading">
+        <div class="section-heading"><h2 id="fund-heading">Make a contribution</h2><button id="refresh" class="secondary" disabled>Refresh</button></div>
+        <div class="stats">
+          <div><span>ETH / USD</span><strong id="price">—</strong></div>
+          <div><span>Contract balance</span><strong id="balance">—</strong></div>
+        </div>
+        <p class="minimum">Minimum <strong>$2 USD</strong> · No maximum</p>
+        <p id="oracle-status" class="muted">Connect your wallet to read the current price.</p>
+        <form id="fund-form">
+          <label for="amount">Amount in ETH</label>
+          <div class="input-row"><input id="amount" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0.001" required aria-describedby="estimate" /><span>ETH</span></div>
+          <p id="estimate" class="muted">Enter an amount to see its current USD value.</p>
+          <button id="fund" type="submit" disabled>Fund Contract</button>
+        </form>
+        <p class="muted fine-print">Contributions go to the contract owner. They cannot be refunded. Gas is paid separately.</p>
+      </section>
+
+      <section id="owner-panel" class="card" aria-labelledby="owner-heading" hidden>
+        <h2 id="owner-heading">Owner panel</h2>
+        <p>Available to withdraw: <strong id="owner-balance">—</strong></p>
+        <button id="withdraw" disabled>Withdraw all ETH</button>
+        <p class="muted fine-print">Contribution records remain after withdrawal.</p>
+      </section>
+
+      <section class="status-panel" aria-label="Transaction status">
+        <p id="status" role="status" aria-live="polite">Loading configuration…</p>
+        <a id="transaction" target="_blank" rel="noopener noreferrer" hidden>View transaction</a>
+      </section>
+      <footer>Educational project · Testnet ETH only · Not audited</footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
