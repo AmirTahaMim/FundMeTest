@@ -1,0 +1,43 @@
+{
+  "name": "fundme-sepolia",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An educational ETH funding contract with a $2 minimum enforced by Chainlink.",
+  "license": "MIT",
+  "engines": { "node": ">=22.13.0 <23 || >=24.0.0 <25", "npm": ">=10" },
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:frontend": "node --test frontend/test/*.test.js",
+    "coverage": "hardhat test --coverage",
+    "typecheck": "hardhat compile && tsc --noEmit && tsc -p frontend/tsconfig.json",
+    "node": "hardhat node --network hardhat",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.ts --network sepolia --build-profile production",
+    "export:frontend": "hardhat run scripts/export-frontend.ts",
+    "frontend:dev": "vite --config frontend/vite.config.js",
+    "frontend:build": "vite build --config frontend/vite.config.js",
+    "frontend:preview": "vite preview --config frontend/vite.config.js",
+    "check": "npm run compile && npm test && npm run test:frontend && npm run typecheck && npm run frontend:build"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "1.4.0",
+    "@openzeppelin/contracts": "5.4.0",
+    "ethers": "6.15.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-ignition": "^3.0.0",
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.18.0",
+    "chai": "^5.3.3",
+    "dotenv": "17.2.2",
+    "hardhat": "3.18.0",
+    "mocha": "^11.7.2",
+    "solc": "0.8.28",
+    "typescript": "~5.9.2",
+    "vite": "7.1.7"
+  }
+}

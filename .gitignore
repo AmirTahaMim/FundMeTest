@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.*
+!.env.example
+artifacts/
+cache/
+coverage/
+types/ethers-contracts/
+frontend/dist/
+frontend/public/generated/
+deployments/
+ignition/deployments/
+*.log
+*.tsbuildinfo
+.DS_Store
+.idea/
+.vscode/
